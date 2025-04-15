@@ -13,7 +13,8 @@ fn main() {
             .unwrap_or_else(|| "/opt/ortools".into());
         cc::Build::new()
             .cpp(true)
-            .flag("-std=c++17")
+            // Change this line to use the correct flag for MSVC
+            .flag("/std:c++17") // Use /std:c++17 instead of -std=c++17
             .file("src/cp_sat_wrapper.cpp")
             .include(&[&ortools_prefix, "/include"].concat())
             .compile("cp_sat_wrapper.a");
